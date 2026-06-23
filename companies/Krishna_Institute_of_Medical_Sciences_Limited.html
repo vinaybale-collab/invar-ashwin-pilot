@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I-NVaR Evidence Pack — Krishna Institute of Medical Sciences Limited</title>
+  <style>
+    :root {
+      --bg: #FAFAF7;
+      --surface: #FFFFFF;
+      --surface-2: #F4F3EE;
+      --border: #E4E2DA;
+      --border-2: #C9C6BA;
+      --ink: #1A1D1A;
+      --ink-2: #5C6058;
+      --ink-3: #9A9D93;
+      --accent: #1F6F43;
+      --conf-a: #1F6F43;
+      --conf-b: #4A8F6A;
+      --conf-c: #8A9078;
+      --conf-d: #7A7E72;
+      --warn: #B45309;
+      --fail: #B91C1C;
+      --pass: #1F6F43;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--ink);
+      background: var(--bg);
+      padding: 24px;
+    }
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px 32px 24px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-top: 4px;
+    }
+    .kicker {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .meta {
+      text-align: right;
+      font-size: 12px;
+      color: var(--ink-2);
+    }
+    .badges { margin-top: 8px; display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap; }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .badge-a { background: var(--conf-a); }
+    .badge-b { background: var(--conf-b); }
+    .badge-c { background: var(--conf-c); }
+    .badge-d { background: var(--conf-d); }
+    .formula-strip {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+    }
+    .formula-strip .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-3);
+      margin-bottom: 4px;
+    }
+    .formula {
+      font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .formula-legend {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--ink-3);
+    }
+    .formula-legend span { margin-right: 14px; }
+    .formula-legend strong { color: var(--ink-2); font-weight: 600; }
+    section { margin-bottom: 16px; }
+    section h2 {
+      font-family: Georgia, serif;
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--surface-2);
+      color: var(--ink-2);
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    td.num, th.num { text-align: right; font-family: ui-monospace, Menlo, monospace; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 720px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      header { flex-direction: column; }
+      .meta { text-align: left; }
+      .badges { justify-content: flex-start; }
+    }
+    .audit-pass td:nth-child(2) { color: var(--pass); font-weight: 600; }
+    .audit-warn td:nth-child(2) { color: var(--warn); font-weight: 600; }
+    .audit-fail td:nth-child(2) { color: var(--fail); font-weight: 600; }
+    footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--ink-3);
+    }
+    footer strong { color: var(--ink-2); }
+    .tree-root { list-style: none; padding-left: 0; margin: 0; }
+    .tree-children { list-style: none; margin: 8px 0 0 0; padding-left: 18px; border-left: 2px solid var(--border); }
+    .tree-node { margin-bottom: 10px; }
+    .tree-head { font-size: 13px; }
+    .tree-val { font-family: ui-monospace, Menlo, monospace; color: var(--accent); font-weight: 600; }
+    .tree-meta { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+    .tree-meta span { font-weight: 600; color: var(--ink-2); }
+    .tree-deriv { font-size: 12px; color: var(--ink-2); margin-top: 4px; }
+    .muted { color: var(--ink-3); font-size: 12px; }
+    @media print {
+      body { padding: 0; background: #fff; }
+      .page { border: none; border-radius: 0; max-width: none; }
+    }
+  </style>
+</head>
+<body>
+<nav class="portfolio-nav" style="margin:12px 0 0;padding:0 32px;font-size:13px;"><a href="../index.html" style="color:#1e4d6b;">← Back to portfolio</a></nav>
+  <div class="page">
+    <header>
+      <div>
+        <div class="kicker">I-NVaR · Evidence pack · DISORDERLY · 5Y</div>
+        <h1>Krishna Institute of Medical Sciences Limited</h1>
+        <div style="margin-top:6px;color:var(--ink-3);font-size:12px;">
+          ID Krishna Institute of Medical Sciences Limited · run ashwin_v1_20260617_041626_26415875
+        </div>
+      </div>
+      <div class="meta">
+        <div>Generated 2026-06-23 07:12 UTC</div>
+        <div class="badges">
+          Evidence tier <span class="badge badge-a">A</span> <span class="badge" style="background:var(--ink-2)">Score 88.0</span>
+          Engine conf <span class="badge badge-d">D</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="formula-strip">
+      <div class="label">I-NVaR · gross screening formula</div>
+      <div class="formula">NVaR = Revenue × Σ D[s,j] × (1−M[i,j]) × Δσ_eff[j]</div>
+      <div class="formula-legend">
+        <span><strong>R</strong> revenue</span>
+        <span><strong>D</strong> dependency</span>
+        <span><strong>M</strong>=0 mitigation</span>
+        <span><strong>Δσ</strong> spatial stress</span>
+      </div>
+    </div>
+
+    <section>
+      <h2>Company summary</h2>
+      <table>
+        <tbody>
+          <tr><td>Revenue (INR Cr)</td><td class="num">—</td></tr>
+          <tr><td>Revenue at risk</td><td class="num">—</td></tr>
+          <tr><td>Facilities</td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Why evidence tier A?</h2>
+      <p style="font-size:13px;color:var(--ink-2);margin-bottom:10px;">Tier A means the strongest input coverage in this pilot (BRSR revenue, geocoded facilities, calibrated dependencies). Still gross, pre-mitigation screening — not validated for allocation or external disclosure. Tier A (score 88.0 &gt;= floor 70): EXACT match (+12); revenue&gt;0 (+8); n_facilities=6 (+13); sector in v1.3 top-30 (+15); material exposure pct&gt;0 (+10); BRSR row present (+20); BRSR water source mix (+10); WATER dep width=0.265 (+0)</p>
+    </section>
+
+    <section>
+      <h2>NVaR distribution · INR Cr</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Statistic</th>
+            <th class="num">INR Cr</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>p05 (downside)</td>
+            <td class="num">3,452</td>
+            <td>Monte Carlo 5th percentile</td>
+          </tr>
+          <tr>
+            <td>Median</td>
+            <td class="num">3,822</td>
+            <td>Primary screening headline</td>
+          </tr>
+          <tr>
+            <td>p95 (upside)</td>
+            <td class="num">4,219</td>
+            <td>Monte Carlo 95th percentile</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Per-facility gross NVaR breakdown</h2>
+      <p class="muted">No per-facility breakdown available.</p>
+    </section>
+
+    <div class="grid-2">
+      <section>
+        <h2>Evidence score breakdown</h2>
+        <table>
+          <thead><tr><th>Component</th><th class="num">Pts</th></tr></thead>
+          <tbody>
+            <tr><td>EXACT match</td><td class="num">12</td></tr>
+<tr><td>revenue&gt;0</td><td class="num">8</td></tr>
+<tr><td>n_facilities=6</td><td class="num">13</td></tr>
+<tr><td>sector in v1.3 top-30</td><td class="num">15</td></tr>
+<tr><td>material exposure pct&gt;0</td><td class="num">10</td></tr>
+<tr><td>BRSR row present</td><td class="num">20</td></tr>
+<tr><td>BRSR water source mix</td><td class="num">10</td></tr>
+<tr><td>WATER dep width=0.265</td><td class="num">0</td></tr>
+
+            <tr style="font-weight:600;background:var(--surface-2)">
+              <td>Composite (max 100)</td>
+              <td class="num">88.0</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Monte Carlo parameters</h2>
+        <table>
+          <tbody>
+            <tr><td>Enabled</td><td>True</td></tr>
+            <tr><td>Samples (n)</td><td>10000</td></tr>
+            <tr><td>Seed</td><td>42</td></tr>
+            <tr><td>Dependency matrix</td><td>v1.3</td></tr>
+            <tr><td>Calibration tier</td><td>india_calibrated</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <section>
+      <h2>Top dependency terms · D[s,j] (material services)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th class="num">D point</th>
+            <th class="num">90% band</th>
+            <th>Conf</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>RECREATION_CULTURE</td><td class="num">0.9000</td><td class="num">0.650–1.000</td><td>C</td></tr>
+<tr><td>GENETIC_RESOURCES</td><td class="num">0.7000</td><td class="num">0.450–0.950</td><td>D</td></tr>
+<tr><td>WATER</td><td class="num">0.6582</td><td class="num">0.501–0.766</td><td>C</td></tr>
+<tr><td>FLOOD_PROTECTION</td><td class="num">0.5414</td><td class="num">0.321–0.649</td><td>C</td></tr>
+<tr><td>SOIL</td><td class="num">0.4738</td><td class="num">0.366–0.581</td><td>B</td></tr>
+<tr><td>CLIMATE_REGULATION</td><td class="num">0.4450</td><td class="num">0.119–0.602</td><td>D</td></tr>
+<tr><td>AIR_QUALITY</td><td class="num">0.2799</td><td class="num">0.119–0.441</td><td>C</td></tr>
+
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Mitigation terms · M[i,j]</h2>
+      <table>
+        <thead><tr><th>Service</th><th class="num">M score</th><th>Source</th></tr></thead>
+        <tbody><tr><td>AIR_QUALITY</td><td class="num">0.000</td><td>default_m_zero</td></tr>
+<tr><td>BIODIVERSITY</td><td class="num">0.000</td><td>default_m_zero</td></tr>
+<tr><td>CLIMATE_REGULATION</td><td class="num">0.000</td><td>default_m_zero</td></tr>
+<tr><td>FLOOD_PROTECTION</td><td class="num">0.000</td><td>default_m_zero</td></tr>
+<tr><td>GENETIC_RESOURCES</td><td class="num">0.000</td><td>default_m_zero</td></tr>
+<tr><td>POLLINATION</td><td class="num">0.000</td><td>default_m_zero</td></tr>
+<tr><td>RECREATION_CULTURE</td><td class="num">0.000</td><td>default_m_zero</td></tr>
+<tr><td>SOIL</td><td class="num">0.000</td><td>default_m_zero</td></tr>
+<tr><td>TIMBER_FIBRE</td><td class="num">0.000</td><td>default_m_zero</td></tr>
+<tr><td>WATER</td><td class="num">0.000</td><td>brsr_water_source_mix</td></tr>
+</tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Spatial sources summary</h2>
+      <table>
+        <tbody>
+          <tr><td>GIS indicators</td><td>facilities_with_gis_indicators</td></tr>
+<tr><td>Spatial facts (portfolio)</td><td>9653</td></tr>
+<tr><td>Unique H3 cells</td><td>43</td></tr>
+<tr><td>CGWB district</td><td>cgwb_district_2025.csv</td></tr>
+<tr><td>Aqueduct baseline</td><td>Aqueduct40_baseline_annual_y2023m07d05.csv</td></tr>
+<tr><td>GLOBIO join</td><td>globio_facility_join.csv</td></tr>
+<tr><td>Δσ source · AIR_QUALITY</td><td>spatial_ashwin_exact:sector_proxy · conf C</td></tr>
+<tr><td>Δσ source · BIODIVERSITY</td><td>spatial_ashwin_exact:national_default · conf D</td></tr>
+<tr><td>Δσ source · CLIMATE_REGULATION</td><td>spatial_ashwin_exact:aqueduct_state_mean · conf C</td></tr>
+<tr><td>Δσ source · FLOOD_PROTECTION</td><td>spatial_ashwin_exact:aqueduct_state_mean · conf C</td></tr>
+<tr><td>Δσ source · GENETIC_RESOURCES</td><td>spatial_ashwin_exact:low_default · conf D</td></tr>
+<tr><td>Δσ source · POLLINATION</td><td>spatial_ashwin_exact:sector_proxy · conf C</td></tr>
+<tr><td>Δσ source · RECREATION_CULTURE</td><td>spatial_ashwin_exact:low_default · conf D</td></tr>
+<tr><td>Δσ source · SOIL</td><td>spatial_ashwin_exact:sector_proxy · conf C</td></tr>
+<tr><td>Δσ source · TIMBER_FIBRE</td><td>spatial_ashwin_exact:low_default · conf D</td></tr>
+<tr><td>Δσ source · WATER</td><td>spatial_ashwin_exact:cgwb_district; spatial_ashwin_exact:nii_gis_water_stress · conf B</td></tr>
+
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>How this number was derived · full provenance tree</h2>
+      <p style="font-size:12px;color:var(--ink-3);margin-bottom:10px;">
+        Each row expands into its inputs: dependency coefficients (MoSPI IO + BRSR blend),
+        mitigation (BRSR / default M=0), spatial stress (CGWB · NII GIS · Aqueduct), and the
+        arithmetic that combines them into gross nature value at risk.
+      </p>
+      <ol class="tree-root">
+        <li class="tree-node depth-0"><div class="tree-head"><strong>Revenue</strong> · Revenue <span class="tree-val">12222.0543576</span> <span class="badge badge-a">A</span></div><div class="tree-meta"><span>Source:</span>  engine_run CSV</div><div class="tree-deriv">Annual revenue INR from NII financials, echoed in engine results.</div></li><li class="tree-node depth-0"><div class="tree-head"><strong>Service contribution (RECREATION_CULTURE)</strong> · D[RECREATION_CULTURE] × (1−M) × Δσ_eff[RECREATION_CULTURE] <span class="tree-val">0.009045</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.9000 from dependency matrix; M=0.0000 from default_m_zero; Δσ_eff=0.0100 from spatial facts × damage function.</div><ol class="tree-children"><li class="tree-node depth-1"><div class="tree-head"><strong>D[RECREATION_CULTURE] dependency coefficient</strong> · D[RECREATION_CULTURE] <span class="tree-val">0.9</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">Sector ? × service RECREATION_CULTURE from India-calibrated matrix.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>M[RECREATION_CULTURE] mitigation</strong> · M[RECREATION_CULTURE] <span class="tree-val">0.0</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> default_m_zero</div><div class="tree-deriv">Mitigation score for RECREATION_CULTURE; gross screening uses M=0 unless BRSR water mix present.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Δσ_eff[RECREATION_CULTURE] spatial stress</strong> · Δσ_eff[RECREATION_CULTURE] <span class="tree-val">0.01005</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> spatial_ashwin_exact:low_default</div><div class="tree-deriv">Spatial degradation × convex damage function.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Product D×(1−M)×Δσ for RECREATION_CULTURE</strong> · × <span class="tree-val">0.009045</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> engine formula</div><div class="tree-deriv">0.9000 × (1−0.0000) × 0.0100 = 0.009045</div></li></ol></li><li class="tree-node depth-0"><div class="tree-head"><strong>Service contribution (GENETIC_RESOURCES)</strong> · D[GENETIC_RESOURCES] × (1−M) × Δσ_eff[GENETIC_RESOURCES] <span class="tree-val">0.007035</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.7000 from dependency matrix; M=0.0000 from default_m_zero; Δσ_eff=0.0100 from spatial facts × damage function.</div><ol class="tree-children"><li class="tree-node depth-1"><div class="tree-head"><strong>D[GENETIC_RESOURCES] dependency coefficient</strong> · D[GENETIC_RESOURCES] <span class="tree-val">0.7</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">Sector ? × service GENETIC_RESOURCES from India-calibrated matrix.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>M[GENETIC_RESOURCES] mitigation</strong> · M[GENETIC_RESOURCES] <span class="tree-val">0.0</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> default_m_zero</div><div class="tree-deriv">Mitigation score for GENETIC_RESOURCES; gross screening uses M=0 unless BRSR water mix present.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Δσ_eff[GENETIC_RESOURCES] spatial stress</strong> · Δσ_eff[GENETIC_RESOURCES] <span class="tree-val">0.01005</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> spatial_ashwin_exact:low_default</div><div class="tree-deriv">Spatial degradation × convex damage function.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Product D×(1−M)×Δσ for GENETIC_RESOURCES</strong> · × <span class="tree-val">0.007035</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> engine formula</div><div class="tree-deriv">0.7000 × (1−0.0000) × 0.0100 = 0.007035</div></li></ol></li><li class="tree-node depth-0"><div class="tree-head"><strong>Service contribution (WATER)</strong> · D[WATER] × (1−M) × Δσ_eff[WATER] <span class="tree-val">0.13394811</span> <span class="badge badge-b">B</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.6582 from dependency matrix; M=0.2059 from brsr_water_source_mix; Δσ_eff=0.2563 from spatial facts × damage function.</div><ol class="tree-children"><li class="tree-node depth-1"><div class="tree-head"><strong>D[WATER] dependency coefficient</strong> · D[WATER] <span class="tree-val">0.6582</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">Sector ? × service WATER from India-calibrated matrix.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>M[WATER] mitigation</strong> · M[WATER] <span class="tree-val">0.205905</span> <span class="badge badge-b">B</span></div><div class="tree-meta"><span>Source:</span> brsr_water_source_mix</div><div class="tree-deriv">Mitigation score for WATER; gross screening uses M=0 unless BRSR water mix present.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Δσ_eff[WATER] spatial stress</strong> · Δσ_eff[WATER] <span class="tree-val">0.256275</span> <span class="badge badge-b">B</span></div><div class="tree-meta"><span>Source:</span> spatial_ashwin_exact:cgwb_district; spatial_ashwin_exact:nii_gis_water_stress</div><div class="tree-deriv">Spatial degradation × convex damage function.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Product D×(1−M)×Δσ for WATER</strong> · × <span class="tree-val">0.13394811</span> <span class="badge badge-b">B</span></div><div class="tree-meta"><span>Source:</span> engine formula</div><div class="tree-deriv">0.6582 × (1−0.2059) × 0.2563 = 0.133948</div></li></ol></li><li class="tree-node depth-0"><div class="tree-head"><strong>Service contribution (FLOOD_PROTECTION)</strong> · D[FLOOD_PROTECTION] × (1−M) × Δσ_eff[FLOOD_PROTECTION] <span class="tree-val">0.04352856</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.5414 from dependency matrix; M=0.0000 from default_m_zero; Δσ_eff=0.0804 from spatial facts × damage function.</div><ol class="tree-children"><li class="tree-node depth-1"><div class="tree-head"><strong>D[FLOOD_PROTECTION] dependency coefficient</strong> · D[FLOOD_PROTECTION] <span class="tree-val">0.5414</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">Sector ? × service FLOOD_PROTECTION from India-calibrated matrix.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>M[FLOOD_PROTECTION] mitigation</strong> · M[FLOOD_PROTECTION] <span class="tree-val">0.0</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> default_m_zero</div><div class="tree-deriv">Mitigation score for FLOOD_PROTECTION; gross screening uses M=0 unless BRSR water mix present.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Δσ_eff[FLOOD_PROTECTION] spatial stress</strong> · Δσ_eff[FLOOD_PROTECTION] <span class="tree-val">0.0804</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> spatial_ashwin_exact:aqueduct_state_mean</div><div class="tree-deriv">Spatial degradation × convex damage function.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Product D×(1−M)×Δσ for FLOOD_PROTECTION</strong> · × <span class="tree-val">0.04352856</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> engine formula</div><div class="tree-deriv">0.5414 × (1−0.0000) × 0.0804 = 0.043529</div></li></ol></li><li class="tree-node depth-0"><div class="tree-head"><strong>Service contribution (SOIL)</strong> · D[SOIL] × (1−M) × Δσ_eff[SOIL] <span class="tree-val">0.02448883</span> <span class="badge badge-b">B</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.4738 from dependency matrix; M=0.0000 from default_m_zero; Δσ_eff=0.0517 from spatial facts × damage function.</div><ol class="tree-children"><li class="tree-node depth-1"><div class="tree-head"><strong>D[SOIL] dependency coefficient</strong> · D[SOIL] <span class="tree-val">0.4738</span> <span class="badge badge-b">B</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">Sector ? × service SOIL from India-calibrated matrix.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>M[SOIL] mitigation</strong> · M[SOIL] <span class="tree-val">0.0</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> default_m_zero</div><div class="tree-deriv">Mitigation score for SOIL; gross screening uses M=0 unless BRSR water mix present.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Δσ_eff[SOIL] spatial stress</strong> · Δσ_eff[SOIL] <span class="tree-val">0.051686</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> spatial_ashwin_exact:sector_proxy</div><div class="tree-deriv">Spatial degradation × convex damage function.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Product D×(1−M)×Δσ for SOIL</strong> · × <span class="tree-val">0.02448883</span> <span class="badge badge-b">B</span></div><div class="tree-meta"><span>Source:</span> engine formula</div><div class="tree-deriv">0.4738 × (1−0.0000) × 0.0517 = 0.024489</div></li></ol></li><li class="tree-node depth-0"><div class="tree-head"><strong>Service contribution (CLIMATE_REGULATION)</strong> · D[CLIMATE_REGULATION] × (1−M) × Δσ_eff[CLIMATE_REGULATION] <span class="tree-val">0.023852</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.4450 from dependency matrix; M=0.0000 from default_m_zero; Δσ_eff=0.0536 from spatial facts × damage function.</div><ol class="tree-children"><li class="tree-node depth-1"><div class="tree-head"><strong>D[CLIMATE_REGULATION] dependency coefficient</strong> · D[CLIMATE_REGULATION] <span class="tree-val">0.445</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">Sector ? × service CLIMATE_REGULATION from India-calibrated matrix.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>M[CLIMATE_REGULATION] mitigation</strong> · M[CLIMATE_REGULATION] <span class="tree-val">0.0</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> default_m_zero</div><div class="tree-deriv">Mitigation score for CLIMATE_REGULATION; gross screening uses M=0 unless BRSR water mix present.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Δσ_eff[CLIMATE_REGULATION] spatial stress</strong> · Δσ_eff[CLIMATE_REGULATION] <span class="tree-val">0.0536</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> spatial_ashwin_exact:aqueduct_state_mean</div><div class="tree-deriv">Spatial degradation × convex damage function.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Product D×(1−M)×Δσ for CLIMATE_REGULATION</strong> · × <span class="tree-val">0.023852</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> engine formula</div><div class="tree-deriv">0.4450 × (1−0.0000) × 0.0536 = 0.023852</div></li></ol></li><li class="tree-node depth-0"><div class="tree-head"><strong>Service contribution (AIR_QUALITY)</strong> · D[AIR_QUALITY] × (1−M) × Δσ_eff[AIR_QUALITY] <span class="tree-val">0.01687797</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.2799 from dependency matrix; M=0.0000 from default_m_zero; Δσ_eff=0.0603 from spatial facts × damage function.</div><ol class="tree-children"><li class="tree-node depth-1"><div class="tree-head"><strong>D[AIR_QUALITY] dependency coefficient</strong> · D[AIR_QUALITY] <span class="tree-val">0.2799</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">Sector ? × service AIR_QUALITY from India-calibrated matrix.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>M[AIR_QUALITY] mitigation</strong> · M[AIR_QUALITY] <span class="tree-val">0.0</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> default_m_zero</div><div class="tree-deriv">Mitigation score for AIR_QUALITY; gross screening uses M=0 unless BRSR water mix present.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Δσ_eff[AIR_QUALITY] spatial stress</strong> · Δσ_eff[AIR_QUALITY] <span class="tree-val">0.0603</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> spatial_ashwin_exact:sector_proxy</div><div class="tree-deriv">Spatial degradation × convex damage function.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Product D×(1−M)×Δσ for AIR_QUALITY</strong> · × <span class="tree-val">0.01687797</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> engine formula</div><div class="tree-deriv">0.2799 × (1−0.0000) × 0.0603 = 0.016878</div></li></ol></li><li class="tree-node depth-0"><div class="tree-head"><strong>Exposure ratio</strong> · Σ D × (1−M) × Δσ_eff <span class="tree-val">0.25877546</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">Sum of per-service contributions, capped to [0, 1].</div><ol class="tree-children"><li class="tree-node depth-1"><div class="tree-head"><strong>Service contribution (RECREATION_CULTURE)</strong> · D[RECREATION_CULTURE] × (1−M) × Δσ_eff[RECREATION_CULTURE] <span class="tree-val">0.009045</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.9000 from dependency matrix; M=0.0000 from default_m_zero; Δσ_eff=0.0100 from spatial facts × damage function.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Service contribution (GENETIC_RESOURCES)</strong> · D[GENETIC_RESOURCES] × (1−M) × Δσ_eff[GENETIC_RESOURCES] <span class="tree-val">0.007035</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.7000 from dependency matrix; M=0.0000 from default_m_zero; Δσ_eff=0.0100 from spatial facts × damage function.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Service contribution (WATER)</strong> · D[WATER] × (1−M) × Δσ_eff[WATER] <span class="tree-val">0.13394811</span> <span class="badge badge-b">B</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.6582 from dependency matrix; M=0.2059 from brsr_water_source_mix; Δσ_eff=0.2563 from spatial facts × damage function.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Service contribution (FLOOD_PROTECTION)</strong> · D[FLOOD_PROTECTION] × (1−M) × Δσ_eff[FLOOD_PROTECTION] <span class="tree-val">0.04352856</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.5414 from dependency matrix; M=0.0000 from default_m_zero; Δσ_eff=0.0804 from spatial facts × damage function.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Service contribution (SOIL)</strong> · D[SOIL] × (1−M) × Δσ_eff[SOIL] <span class="tree-val">0.02448883</span> <span class="badge badge-b">B</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.4738 from dependency matrix; M=0.0000 from default_m_zero; Δσ_eff=0.0517 from spatial facts × damage function.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Service contribution (CLIMATE_REGULATION)</strong> · D[CLIMATE_REGULATION] × (1−M) × Δσ_eff[CLIMATE_REGULATION] <span class="tree-val">0.023852</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.4450 from dependency matrix; M=0.0000 from default_m_zero; Δσ_eff=0.0536 from spatial facts × damage function.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Service contribution (AIR_QUALITY)</strong> · D[AIR_QUALITY] × (1−M) × Δσ_eff[AIR_QUALITY] <span class="tree-val">0.01687797</span> <span class="badge badge-c">C</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">D=0.2799 from dependency matrix; M=0.0000 from default_m_zero; Δσ_eff=0.0603 from spatial facts × damage function.</div></li></ol></li><li class="tree-node depth-0"><div class="tree-head"><strong>NVaR (median)</strong> · Revenue × ratio <span class="tree-val">3822.388714919104</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> engine_run CSV (Monte Carlo median)</div><div class="tree-deriv">Median of MC distribution from precomputed engine run.</div><ol class="tree-children"><li class="tree-node depth-1"><div class="tree-head"><strong>Revenue (INR)</strong> · R <span class="tree-val">12222.0543576</span> <span class="badge badge-a">A</span></div><div class="tree-meta"><span>Source:</span>  engine_run CSV</div><div class="tree-deriv">Annual revenue used as exposure base.</div></li><li class="tree-node depth-1"><div class="tree-head"><strong>Exposure ratio</strong> · Σ D×(1−M)×Δσ <span class="tree-val">0.25877546</span> <span class="badge badge-d">D</span></div><div class="tree-meta"><span>Source:</span> India-calibrated dependency matrix v1.3</div><div class="tree-deriv">Revenue × 0.258775 = ₹3822.39 Cr</div></li></ol></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Audit flags</h2>
+      <table>
+        <thead><tr><th>Flag</th><th>Grade</th><th>Message</th></tr></thead>
+        <tbody>
+          <tr class="audit-warn"><td>proxy_spatial_source</td><td>WARN</td><td>Spatial Δσ derived from proxy/state-mean/synthetic source.</td></tr>
+<tr class="audit-warn"><td>engine_confidence_d</td><td>WARN</td><td>Engine methodological confidence grade is D (lowest).</td></tr>
+
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      <strong>Disclaimer.</strong> Gross (pre-mitigation) NVaR · v1.3 Tier B · India-calibrated D (MoSPI IO + BRSR blend on ENCORE prior) · M=0 · allocation-grade screening. Historical backtest calibrated against free-source observed EBITDA panel (3 shocks). Facility revenue from facility_master_v2 (BRSR/type-weighted where available). Supports IC/LP diligence — not covenant or regulatory disclosure without attestation.
+      Evidence tier A reflects input completeness for screening, not model validation.
+      Engine confidence D is the worst-of methodological grade across
+      spatial facts, dependency coefficients, and mitigation inputs.
+    </footer>
+  </div>
+</body>
+</html>
