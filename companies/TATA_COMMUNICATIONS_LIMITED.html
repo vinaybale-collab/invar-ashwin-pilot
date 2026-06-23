@@ -158,7 +158,8 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 8px 10px 12px;
-      min-height: 140px;
+      min-height: 160px;
+      overflow: hidden;
     }
     .viz-q-card h3 {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -178,6 +179,9 @@
       fill: var(--ink-3);
     }
     .chart-gauge { min-height: 150px; }
+    .chart-svg { width: 100%; height: auto; display: block; max-height: 220px; }
+    .svg-title { font: 600 11px -apple-system, sans-serif; fill: var(--ink-2); }
+    .svg-label { font: 10px -apple-system, BlinkMacSystemFont, sans-serif; fill: var(--ink-3); }
     .viz-panel {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -191,9 +195,6 @@
       .viz-questions { grid-template-columns: 1fr; }
       .viz-wide { grid-column: auto; }
     }
-    .chart-svg { width: 100%; height: auto; display: block; }
-    .svg-title { font: 600 11px -apple-system, sans-serif; fill: var(--ink-2); }
-    .svg-label { font: 11px ui-monospace, Menlo, monospace; fill: var(--ink-3); }
     .svg-accent { fill: var(--accent); font-weight: 600; }
     .svg-legend { font: 10px -apple-system, sans-serif; fill: var(--ink-3); }
     .band-line { stroke: var(--border-2); stroke-width: 2; }
@@ -425,7 +426,7 @@
         </div>
       </div>
       <div class="meta">
-        <div>Generated 2026-06-23 08:45 UTC</div>
+        <div>Generated 2026-06-23 09:11 UTC</div>
         <div class="badges">
           Evidence tier <span class="badge badge-a">A</span> <span class="badge" style="background:var(--ink-2)">Score 94.0</span>
           Engine conf <span class="badge badge-d">D</span>
@@ -435,11 +436,12 @@
 
 
     <section class="investor-summary">
-      <h2>Investor summary · nature-related revenue exposure</h2>
+      <h2>Investor summary</h2>
       <p class="investor-lede">
-        Read this first. Charts and line-by-line derivation follow for auditors who need full traceability.
+        What this company faces, what drives it, and where it concentrates.
+        Charts and line-by-line derivation follow for auditors.
       </p>
-      <p class="investor-p"><strong>TATA COMMUNICATIONS LIMITED</strong> has an estimated gross nature value at risk (NVaR) of <strong>535.3 Cr</strong> (Monte Carlo median) under a <strong>DISORDERLY</strong> transition over <strong>5Y</strong>. That is equivalent to <strong>7.4%</strong> of annual revenue (7,278 Cr). Using a sector EBITDA margin proxy, this maps to roughly <strong>61.3%</strong> of proxy EBITDA at risk (screening headline — not audited EBITDA). The uncertainty band runs from 495.9 Cr (5th percentile) to 578.2 Cr (95th percentile).</p><p class="investor-p">Nature-related revenue exposure is driven primarily by <strong>flood protection from natural buffers</strong> (30% of the exposure ratio), <strong>air quality and particulate exposure</strong> (22% of the exposure ratio), <strong>climate regulation and temperature extremes</strong> (19% of the exposure ratio), and <strong>soil health and land productivity</strong> (13% of the exposure ratio). Each channel combines sector dependency on the ecosystem service (India-calibrated ENCORE/MoSPI matrix), optional BRSR-reported mitigation, and location-specific spatial stress at geocoded facilities.</p><p class="investor-p">Flood protection from natural buffers: dependency D=0.482, no mitigation applied in headline (M≈0), spatial stress Δσ=0.080 → contribution 0.0388 to the exposure ratio. Air quality and particulate exposure: dependency D=0.469, no mitigation applied in headline (M≈0), spatial stress Δσ=0.060 → contribution 0.0283 to the exposure ratio. Climate regulation and temperature extremes: dependency D=0.449, no mitigation applied in headline (M≈0), spatial stress Δσ=0.054 → contribution 0.0241 to the exposure ratio.</p><p class="investor-p">Exposure is mapped across <strong>12 geocoded facilities</strong> using India-specific spatial layers (CGWB district groundwater, NII GIS water stress, WRI Aqueduct baseline, and GLOBIO biodiversity where applicable). Facility-level splits appear in the charts below and in the detailed tables.</p><p class="investor-p">Evidence tier <strong>A</strong> (94/100): Tier A means the strongest input coverage in this pilot (BRSR revenue, geocoded facilities, calibrated dependencies). Still gross, pre-mitigation screening — not validated for allocation or external disclosure. 2 audit flag(s) remain — review the audit section before using this figure in allocation decisions. Figures are <strong>gross and pre-mitigation</strong> unless BRSR water-source mix is present; they support portfolio screening and LP diligence, not regulatory disclosure or covenant testing without independent attestation.</p>
+      <p class="investor-p"><strong>TATA COMMUNICATIONS LIMITED</strong> faces an estimated <strong>535.3 Cr</strong> of gross nature-related value at risk over a <strong>5Y</strong> <strong>disorderly</strong> transition scenario. That is <strong>7.4%</strong> of annual revenue (on a 7,278 Cr base). On a sector EBITDA proxy, the same shock equates to roughly <strong>61.3%</strong> of operating profit at risk — a useful IC screening ratio, not audited EBITDA. The plausible range spans 495.9–578.2 Cr, so treat the headline as central, not precise.</p><p class="investor-p">The dominant channel is <strong>flood protection from natural buffers</strong>, accounting for about <strong>30%</strong> of this company's nature exposure. Where natural flood buffers weaken, business interruption and asset damage risk rises at river-adjacent and low-lying facilities. A secondary driver is <strong>air quality and particulate exposure</strong> (22%). Little disclosed mitigation is applied in the headline number, so this reads as gross downside exposure. </p><p class="investor-p">Exposure is geolocated across <strong>12 facilities</strong> in India. The largest single site — <strong>TATA COMMUNICATIONS LIMITED::EST_2</strong> — carries about <strong>11%</strong> of facility-level NVaR (103.5 Cr). The number moves if local water stress worsens, if sector dependency assumptions shift, or if additional mitigation is verified — full mechanics are in the derivation table below.</p><p class="investor-p">We classify input evidence as <strong>Tier A</strong> (94/100) — Tier A means the strongest input coverage in this pilot (BRSR revenue, geocoded facilities, calibrated dependencies). Still gross, pre-mitigation screening — not validated for allocation or external disclosure. (2 audit flag(s) to review before using in allocation). Screening-grade gross NVaR for portfolio and LP diligence — not for covenant or regulatory disclosure without attestation.</p>
     </section>
 
 
@@ -451,15 +453,20 @@
       </p>
       <div class="hero-cards"><div class="hero-card"><div class="hero-card-label">Gross NVaR</div><div class="hero-card-value">535.3</div><div class="hero-card-sub">INR Cr · median · pre-mitigation</div></div><div class="hero-card"><div class="hero-card-label">Revenue at risk</div><div class="hero-card-value">7.4%</div><div class="hero-card-sub">of annual revenue</div></div><div class="hero-card"><div class="hero-card-label">EBITDA at risk</div><div class="hero-card-value">61.3%</div><div class="hero-card-sub">sector-proxy margin · screening</div></div><div class="hero-card"><div class="hero-card-label">Revenue base</div><div class="hero-card-value">7,278</div><div class="hero-card-sub">INR Cr · disclosed / modelled</div></div><div class="hero-card"><div class="hero-card-label">Facilities</div><div class="hero-card-value">12</div><div class="hero-card-sub">geocoded in pilot</div></div><div class="hero-card"><div class="hero-card-label">Evidence</div><div class="hero-card-value">Tier A · 94</div><div class="hero-card-sub">composite score / 100</div></div></div>
       <div class="viz-questions">
-        <article class="viz-q-card"><h3>1 · How much is at stake?</h3><svg class="chart-svg chart-gauge" viewBox="0 0 360 150" role="img" aria-label="Revenue and EBITDA at risk">
-  <text x="20" y="18" class="svg-title">Q1 · How much is at stake?</text>
-  <path d="M70,95 A50,50 0 0,1 170,95" fill="none" stroke="#E8E6DF" stroke-width="12"/>
-  <path d="M70.0,95 A50,50 0 0,1 71.3,83.5" fill="none" stroke="#2563EB" stroke-width="12" stroke-linecap="round"/><text x="120" y="113" text-anchor="middle" class="gauge-big">7.4%</text><text x="120" y="127" text-anchor="middle" class="svg-label">of revenue</text>
-  <path d="M190,95 A50,50 0 0,1 290,95" fill="none" stroke="#E8E6DF" stroke-width="12"/>
-  <path d="M190.0,95 A50,50 0 0,1 257.4,48.1" fill="none" stroke="#DC2626" stroke-width="12" stroke-linecap="round"/><text x="240" y="113" text-anchor="middle" class="gauge-big">61.3%</text><text x="240" y="127" text-anchor="middle" class="svg-label">of proxy EBITDA</text>
-  <text x="20" y="130" class="svg-label">Gross NVaR median 535.3 Cr · EBITDA uses sector margin proxy</text>
-</svg></article><article class="viz-q-card"><h3>2 · How uncertain is the estimate?</h3><svg class="chart-svg" viewBox="0 0 360 130" role="img" aria-label="NVaR uncertainty fan">
-  <text x="20" y="18" class="svg-title">Q2 · How uncertain is the estimate?</text>
+        <article class="viz-q-card"><h3>1 · How much is at stake?</h3><svg class="chart-svg chart-gauge" viewBox="0 0 380 178" role="img" aria-label="Revenue and EBITDA at risk">
+  <text x="16" y="16" class="svg-title">Exposure headline</text>
+  <path d="M45,88 A42,42 0 0,1 141,88" fill="none" stroke="#E8E6DF" stroke-width="11"/>
+  <path d="M51.0,88 A42,42 0 0,1 52.1,78.4" fill="none" stroke="#2563EB" stroke-width="11" stroke-linecap="round"/>
+  <text x="93" y="82" text-anchor="middle" class="gauge-big">7.4%</text>
+  <text x="93" y="98" text-anchor="middle" class="svg-label">of revenue</text>
+  <path d="M239,88 A42,42 0 0,1 335,88" fill="none" stroke="#E8E6DF" stroke-width="11"/>
+  <path d="M245.0,88 A42,42 0 0,1 301.6,48.6" fill="none" stroke="#DC2626" stroke-width="11" stroke-linecap="round"/>
+  <text x="287" y="82" text-anchor="middle" class="gauge-big">61.3%</text>
+  <text x="287" y="98" text-anchor="middle" class="svg-label">of proxy EBITDA</text>
+  <text x="16" y="132" class="svg-label">Gross NVaR median · 535.3 Cr</text>
+  <text x="16" y="150" class="svg-label">EBITDA uses sector margin proxy · screening only</text>
+</svg></article><article class="viz-q-card"><h3>2 · How uncertain is the estimate?</h3><svg class="chart-svg" viewBox="0 0 380 148" role="img" aria-label="NVaR uncertainty fan">
+  <text x="16" y="16" class="svg-title">Estimate uncertainty</text>
   <defs>
     <linearGradient id="fanGrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#93C5FD"/>
@@ -467,39 +474,39 @@
       <stop offset="100%" stop-color="#FCA5A5"/>
     </linearGradient>
   </defs>
-  <rect x="40.0" y="46" width="280.0" height="24" fill="url(#fanGrad)" opacity="0.55" rx="6"/>
-  <line x1="40.0" y1="58" x2="320.0" y2="58" stroke="#64748B" stroke-width="2"/>
-  <line x1="174.1" y1="38" x2="174.1" y2="78" stroke="#059669" stroke-width="3"/>
-  <circle cx="174.1" cy="58" r="7" fill="#059669"/>
-  <text x="40.0" y="94" class="svg-label" text-anchor="middle">p05 495.9</text>
-  <text x="174.1" y="94" class="svg-label svg-accent" text-anchor="middle">median 535.3</text>
-  <text x="320.0" y="94" class="svg-label" text-anchor="middle">p95 578.2</text>
-  <text x="20" y="112" class="svg-label">Monte Carlo band — wider fan = more model uncertainty</text>
-</svg></article><article class="viz-q-card"><h3>3 · Which services drive risk?</h3><svg class="chart-svg" viewBox="0 0 360 160" role="img" aria-label="Service mix donut">
-  <text x="20" y="18" class="svg-title">Q3 · Which ecosystem services drive risk?</text>
-  <path d="M110,88 L110.0,36.0 A52,52 0 0,1 159.2,104.8 Z" fill="#2563EB"/><path d="M110,88 L159.2,104.8 A52,52 0 0,1 102.5,139.5 Z" fill="#059669"/><path d="M110,88 L102.5,139.5 A52,52 0 0,1 59.6,100.7 Z" fill="#D97706"/><path d="M110,88 L59.6,100.7 A52,52 0 0,1 66.0,60.4 Z" fill="#DC2626"/><path d="M110,88 L66.0,60.4 A52,52 0 0,1 87.7,41.0 Z" fill="#7C3AED"/><path d="M110,88 L87.7,41.0 A52,52 0 0,1 110.0,36.0 Z" fill="#0891B2"/>
-  <circle cx="110" cy="88" r="28" fill="#fff"/>
-  <text x="110" y="92" text-anchor="middle" class="gauge-mid">Σ D×(1−M)×Δσ</text>
-  <rect x="200" y="32" width="10" height="10" fill="#2563EB" rx="2"/><text x="216" y="42" class="svg-label">Flood 30%</text><rect x="200" y="50" width="10" height="10" fill="#059669" rx="2"/><text x="216" y="60" class="svg-label">Air 22%</text><rect x="200" y="68" width="10" height="10" fill="#D97706" rx="2"/><text x="216" y="78" class="svg-label">Climate 19%</text><rect x="200" y="86" width="10" height="10" fill="#DC2626" rx="2"/><text x="216" y="96" class="svg-label">Soil 13%</text><rect x="200" y="104" width="10" height="10" fill="#7C3AED" rx="2"/><text x="216" y="114" class="svg-label">Water 9%</text><rect x="200" y="122" width="10" height="10" fill="#0891B2" rx="2"/><text x="216" y="132" class="svg-label">Rec 7%</text>
-</svg></article><article class="viz-q-card"><h3>4 · What drives each channel?</h3><svg class="chart-svg" viewBox="0 0 360 190" role="img" aria-label="Risk decomposition">
-  <text x="20" y="18" class="svg-title">Q4 · What drives each service channel?</text>
-  <text x="20" y="48" class="svg-label">Flood</text><rect x="90" y="36" width="220.0" height="16" fill="#2563EB" rx="4"/><text x="316.0" y="48" class="svg-label">D=0.48 M=0.00 Δσ=0.080</text><text x="20" y="76" class="svg-label">Air</text><rect x="90" y="64" width="160.5" height="16" fill="#059669" rx="4"/><text x="256.5" y="76" class="svg-label">D=0.47 M=0.00 Δσ=0.060</text><text x="20" y="104" class="svg-label">Climate</text><rect x="90" y="92" width="136.6" height="16" fill="#D97706" rx="4"/><text x="232.6" y="104" class="svg-label">D=0.45 M=0.00 Δσ=0.054</text><text x="20" y="132" class="svg-label">Soil</text><rect x="90" y="120" width="93.4" height="16" fill="#DC2626" rx="4"/><text x="189.4" y="132" class="svg-label">D=0.32 M=0.00 Δσ=0.052</text><text x="20" y="160" class="svg-label">Water</text><rect x="90" y="148" width="65.6" height="16" fill="#7C3AED" rx="4"/><text x="161.6" y="160" class="svg-label">D=0.58 M=0.63 Δσ=0.053</text>
-</svg></article><article class="viz-q-card viz-wide"><h3>5 · Where is exposure concentrated?</h3><svg class="chart-svg" viewBox="0 0 360 130" role="img" aria-label="Facility treemap">
-  <text x="20" y="18" class="svg-title">Q5 · Where is exposure concentrated?</text>
-  <rect x="20.0" y="36" width="42.7" height="18" fill="#D97706" rx="3" opacity="0.85"/><text x="24.0" y="49" class="svg-legend" fill="#fff">TATA COMMUNIC… 103.5</text><rect x="64.7" y="36" width="42.7" height="18" fill="#DC2626" rx="3" opacity="0.85"/><text x="68.7" y="49" class="svg-legend" fill="#fff">TATA COMMUNIC… 103.5</text><rect x="109.4" y="36" width="42.7" height="18" fill="#7C3AED" rx="3" opacity="0.85"/><text x="113.4" y="49" class="svg-legend" fill="#fff">TATA COMMUNIC… 103.5</text><rect x="154.1" y="36" width="42.7" height="18" fill="#0891B2" rx="3" opacity="0.85"/><text x="158.1" y="49" class="svg-legend" fill="#fff">TATA COMMUNIC… 103.5</text><rect x="198.8" y="36" width="42.7" height="18" fill="#DB2777" rx="3" opacity="0.85"/><text x="202.8" y="49" class="svg-legend" fill="#fff">TATA COMMUNIC… 103.5</text><rect x="20.0" y="58" width="42.7" height="18" fill="#65A30D" rx="3" opacity="0.85"/><text x="24.0" y="71" class="svg-legend" fill="#fff">TATA COMMUNIC… 103.5</text><rect x="64.7" y="58" width="42.7" height="18" fill="#EA580C" rx="3" opacity="0.85"/><text x="68.7" y="71" class="svg-legend" fill="#fff">TATA COMMUNIC… 103.5</text><rect x="109.4" y="58" width="24.0" height="18" fill="#4F46E5" rx="3" opacity="0.85"/><text x="113.4" y="71" class="svg-legend" fill="#fff">TATA COMMUNIC… 50.96</text>
-  <text x="20" y="118" class="svg-label">Facility gross NVaR · width ∝ share of company total</text>
-</svg></article><article class="viz-q-card"><h3>6 · How much mitigation applies?</h3><svg class="chart-svg" viewBox="0 0 360 68" role="img" aria-label="Mitigation effect">
-  <text x="20" y="18" class="svg-title">Q6 · How much mitigation is in place?</text>
-  <text x="100" y="30" class="svg-legend">▬ gross (M=0)  ▬ after BRSR mitigation</text>
-  <text x="20" y="48" class="svg-label">Water</text><rect x="100" y="34" width="12.4" height="10" fill="#FCA5A5" rx="3"/><rect x="100" y="48" width="4.6" height="10" fill="#059669" rx="3"/><text x="280" y="48" class="svg-label">M=63%</text>
-</svg></article><article class="viz-q-card"><h3>7 · Can I trust this number?</h3><svg class="chart-svg" viewBox="0 0 360 150" role="img" aria-label="Evidence quality">
-  <text x="20" y="18" class="svg-title">Q7 · Can I trust this number?</text>
-  <circle cx="70" cy="88" r="44" fill="none" stroke="#E8E6DF" stroke-width="10"/>
-  <circle cx="70" cy="88" r="44" fill="none" stroke="#059669" stroke-width="10"
-    stroke-dasharray="259.4 276" transform="rotate(-90 70 88)"/>
-  <text x="70" y="84" text-anchor="middle" class="gauge-big">94</text>
-  <text x="70" y="100" text-anchor="middle" class="svg-label">Tier A</text>
-  <text x="180" y="50" class="svg-label">EXACT match</text><rect x="180" y="54" width="57.6" height="8" fill="#2563EB" rx="4"/><text x="241.6" y="62" class="svg-label">+12</text><text x="180" y="72" class="svg-label">revenue&gt;0</text><rect x="180" y="76" width="38.4" height="8" fill="#059669" rx="4"/><text x="222.4" y="84" class="svg-label">+8</text><text x="180" y="94" class="svg-label">n_facilities=12</text><rect x="180" y="98" width="72.0" height="8" fill="#D97706" rx="4"/><text x="256.0" y="106" class="svg-label">+15</text><text x="180" y="116" class="svg-label">sector in v1.3 top-30</text><rect x="180" y="120" width="72.0" height="8" fill="#DC2626" rx="4"/><text x="256.0" y="128" class="svg-label">+15</text><text x="180" y="138" class="svg-label">material exposure pct…</text><rect x="180" y="142" width="48.0" height="8" fill="#7C3AED" rx="4"/><text x="232.0" y="150" class="svg-label">+10</text>
+  <rect x="24.0" y="48" width="332.0" height="28" fill="url(#fanGrad)" opacity="0.5" rx="6"/>
+  <line x1="24.0" y1="62" x2="356.0" y2="62" stroke="#64748B" stroke-width="2"/>
+  <line x1="183.0" y1="40" x2="183.0" y2="84" stroke="#059669" stroke-width="3"/>
+  <circle cx="183.0" cy="62" r="7" fill="#059669"/>
+  <text x="24.0" y="100" class="svg-label" text-anchor="start">Low 495.9</text>
+  <text x="183.0" y="100" class="svg-label svg-accent" text-anchor="middle">Median 535.3</text>
+  <text x="356.0" y="100" class="svg-label" text-anchor="end">High 578.2</text>
+  <text x="16" y="128" class="svg-label">90% simulation band · tighter = more stable estimate</text>
+</svg></article><article class="viz-q-card"><h3>3 · Which services drive risk?</h3><svg class="chart-svg" viewBox="0 0 380 176" role="img" aria-label="Service mix donut">
+  <text x="16" y="16" class="svg-title">Risk by ecosystem service</text>
+  <path d="M88,86 L88.0,42.0 A44,44 0 0,1 129.6,100.2 Z" fill="#2563EB"/><path d="M88,86 L129.6,100.2 A44,44 0 0,1 81.6,129.5 Z" fill="#059669"/><path d="M88,86 L81.6,129.5 A44,44 0 0,1 45.3,96.7 Z" fill="#D97706"/><path d="M88,86 L45.3,96.7 A44,44 0 0,1 50.7,62.6 Z" fill="#DC2626"/><path d="M88,86 L50.7,62.6 A44,44 0 0,1 69.1,46.3 Z" fill="#7C3AED"/><path d="M88,86 L69.1,46.3 A44,44 0 0,1 88.0,42.0 Z" fill="#0891B2"/>
+  <circle cx="88" cy="86" r="24" fill="#fff"/>
+  <text x="88" y="90" text-anchor="middle" class="gauge-mid">mix</text>
+  <rect x="188" y="19" width="10" height="10" fill="#2563EB" rx="2"/><text x="204" y="28" class="svg-label">Flood · 30%</text><rect x="188" y="39" width="10" height="10" fill="#059669" rx="2"/><text x="204" y="48" class="svg-label">Air · 22%</text><rect x="188" y="59" width="10" height="10" fill="#D97706" rx="2"/><text x="204" y="68" class="svg-label">Climate · 19%</text><rect x="188" y="79" width="10" height="10" fill="#DC2626" rx="2"/><text x="204" y="88" class="svg-label">Soil · 13%</text><rect x="188" y="99" width="10" height="10" fill="#7C3AED" rx="2"/><text x="204" y="108" class="svg-label">Water · 9%</text><rect x="188" y="119" width="10" height="10" fill="#0891B2" rx="2"/><text x="204" y="128" class="svg-label">Rec · 7%</text>
+</svg></article><article class="viz-q-card"><h3>4 · What drives each channel?</h3><svg class="chart-svg" viewBox="0 0 380 206" role="img" aria-label="Risk decomposition">
+  <text x="16" y="16" class="svg-title">Share of total exposure</text>
+  <text x="16" y="43" class="svg-label">Flood</text><rect x="108" y="32" width="170.0" height="14" fill="#2563EB" rx="4"/><text x="286" y="43" class="svg-label">33%</text><text x="16" y="77" class="svg-label">Air</text><rect x="108" y="66" width="124.0" height="14" fill="#059669" rx="4"/><text x="286" y="77" class="svg-label">24%</text><text x="16" y="111" class="svg-label">Climate</text><rect x="108" y="100" width="105.5" height="14" fill="#D97706" rx="4"/><text x="286" y="111" class="svg-label">20%</text><text x="16" y="145" class="svg-label">Soil</text><rect x="108" y="134" width="72.2" height="14" fill="#DC2626" rx="4"/><text x="286" y="145" class="svg-label">14%</text><text x="16" y="179" class="svg-label">Water</text><rect x="108" y="168" width="50.7" height="14" fill="#7C3AED" rx="4"/><text x="286" y="179" class="svg-label">10% · 63% mitigated</text>
+</svg></article><article class="viz-q-card viz-wide"><h3>5 · Where is exposure concentrated?</h3><svg class="chart-svg" viewBox="0 0 380 208" role="img" aria-label="Facility concentration">
+  <text x="16" y="16" class="svg-title">Facility concentration</text>
+  <text x="16" y="43" class="svg-label">TATA COMMUNICATIO…</text><rect x="130" y="32" width="170.0" height="14" fill="#D97706" rx="4" opacity="0.9"/><text x="308" y="43" class="svg-label">103.5 · 17%</text><text x="16" y="71" class="svg-label">TATA COMMUNICATIO…</text><rect x="130" y="60" width="170.0" height="14" fill="#DC2626" rx="4" opacity="0.9"/><text x="308" y="71" class="svg-label">103.5 · 17%</text><text x="16" y="99" class="svg-label">TATA COMMUNICATIO…</text><rect x="130" y="88" width="170.0" height="14" fill="#7C3AED" rx="4" opacity="0.9"/><text x="308" y="99" class="svg-label">103.5 · 17%</text><text x="16" y="127" class="svg-label">TATA COMMUNICATIO…</text><rect x="130" y="116" width="170.0" height="14" fill="#0891B2" rx="4" opacity="0.9"/><text x="308" y="127" class="svg-label">103.5 · 17%</text><text x="16" y="155" class="svg-label">TATA COMMUNICATIO…</text><rect x="130" y="144" width="170.0" height="14" fill="#DB2777" rx="4" opacity="0.9"/><text x="308" y="155" class="svg-label">103.5 · 17%</text><text x="16" y="183" class="svg-label">TATA COMMUNICATIO…</text><rect x="130" y="172" width="170.0" height="14" fill="#65A30D" rx="4" opacity="0.9"/><text x="308" y="183" class="svg-label">103.5 · 17%</text>
+</svg></article><article class="viz-q-card"><h3>6 · How much mitigation applies?</h3><svg class="chart-svg" viewBox="0 0 380 88" role="img" aria-label="Mitigation effect">
+  <text x="16" y="16" class="svg-title">Mitigation in place</text>
+  <text x="88" y="30" class="svg-legend">Pink = gross · Green = after reported mitigation</text>
+  <text x="16" y="50" class="svg-label">Water</text><rect x="88" y="38" width="160.0" height="9" fill="#FCA5A5" rx="3"/><rect x="88" y="52" width="59.8" height="9" fill="#059669" rx="3"/><text x="260" y="58" class="svg-label">63% offset</text>
+</svg></article><article class="viz-q-card"><h3>7 · Can I trust this number?</h3><svg class="chart-svg" viewBox="0 0 380 168" role="img" aria-label="Evidence quality">
+  <text x="16" y="16" class="svg-title">Data confidence</text>
+  <circle cx="72" cy="72" r="40" fill="none" stroke="#E8E6DF" stroke-width="9"/>
+  <circle cx="72" cy="72" r="40" fill="none" stroke="#059669" stroke-width="9"
+    stroke-dasharray="235.9 251" transform="rotate(-90 72 72)"/>
+  <text x="72" y="68" text-anchor="middle" class="gauge-big">94</text>
+  <text x="72" y="84" text-anchor="middle" class="svg-label">Tier A</text>
+  <text x="148" y="68" class="svg-label">Input coverage drivers</text>
+  <text x="148" y="88" class="svg-label">EXACT match</text><rect x="148" y="92" width="57.6" height="7" fill="#2563EB" rx="3"/><text x="211.6" y="99" class="svg-label">+12</text><text x="148" y="108" class="svg-label">revenue&gt;0</text><rect x="148" y="112" width="38.4" height="7" fill="#059669" rx="3"/><text x="192.4" y="119" class="svg-label">+8</text><text x="148" y="128" class="svg-label">n_facilities=12</text><rect x="148" y="132" width="72.0" height="7" fill="#D97706" rx="3"/><text x="226.0" y="139" class="svg-label">+15</text><text x="148" y="148" class="svg-label">sector in v1.3 top-…</text><rect x="148" y="152" width="72.0" height="7" fill="#DC2626" rx="3"/><text x="226.0" y="159" class="svg-label">+15</text>
 </svg></article>
       </div>
     </section>

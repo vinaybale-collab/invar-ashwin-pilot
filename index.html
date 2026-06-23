@@ -6,10 +6,38 @@
   <title>I-NVaR · Ashwin Portfolio</title>
   <style>
     :root { font-family: Georgia, "Times New Roman", serif; color: #1a1a1a; background: #f7f4ee; }
-    body { max-width: 980px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+    body { max-width: 1080px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
     h1 { font-size: 1.75rem; font-weight: 500; margin-bottom: 0.35rem; }
+    h2 { font-size: 1.1rem; font-weight: 500; margin: 1.75rem 0 0.75rem; }
     .kicker { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; }
-    .meta { color: #555; font-size: 0.9rem; margin-bottom: 1.25rem; }
+    .meta { color: #555; font-size: 0.9rem; margin-bottom: 1rem; }
+    .story {
+      background: #fff; border: 1px solid #ddd; border-left: 3px solid #1e4d6b;
+      padding: 1rem 1.1rem; font-size: 0.95rem; line-height: 1.55; color: #333; margin-bottom: 1.25rem;
+    }
+    .kpi-row {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.25rem;
+    }
+    @media (max-width: 720px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+    .kpi {
+      background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 10px 12px;
+    }
+    .kpi-label { font: 10px system-ui, sans-serif; text-transform: uppercase; letter-spacing: 0.06em; color: #888; }
+    .kpi-value { font-family: Georgia, serif; font-size: 1.35rem; margin-top: 4px; }
+    .kpi-sub { font-size: 10px; color: #777; margin-top: 2px; }
+    .pf-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 1.5rem;
+    }
+    @media (max-width: 820px) { .pf-grid { grid-template-columns: 1fr; } }
+    .pf-card {
+      background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 8px 10px 12px;
+      overflow: hidden; min-height: 180px;
+    }
+    .pf-chart { width: 100%; height: auto; display: block; max-height: 240px; }
+    .pf-title { font: 600 11px system-ui, sans-serif; fill: #444; }
+    .pf-label { font: 10px system-ui, sans-serif; fill: #555; }
+    .pf-mid { font: 600 10px ui-monospace, monospace; fill: #333; }
+    .pf-legend { font: 9px system-ui, sans-serif; fill: #888; }
     .toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1rem; align-items: center; }
     .toolbar input, .toolbar select {
       font: 13px system-ui, sans-serif; padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px; background: #fff;
@@ -31,6 +59,36 @@
   <div class="kicker">Urvara · I-NVaR · Ashwin pilot</div>
   <h1>Indian Nature Value at Risk</h1>
   <p class="meta">101 holdings · Σ NVaR 140,169 Cr · DISORDERLY / 5Y · gross screening</p>
+  <div class="story">This portfolio of <strong>101 holdings</strong> carries <strong>140,169 Cr</strong> of gross nature value at risk under a disorderly five-year transition. <strong>Manufacturing</strong> dominates absolute exposure (44,605 Cr, 32% of portfolio NVaR), while <strong>Mining</strong> shows the highest average revenue intensity (17.2%). The single largest name is <strong>Hindustan Petroleum Corporation Limited</strong> at 20,907 Cr. 73 of 101 names sit in evidence Tier A — strong input coverage for screening, with full derivation on each company page.</div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-label">Portfolio NVaR</div><div class="kpi-value">140,169 Cr</div><div class="kpi-sub">gross · median</div></div>
+    <div class="kpi"><div class="kpi-label">Avg revenue at risk</div><div class="kpi-value">7.7%</div><div class="kpi-sub">across 101 names</div></div>
+    <div class="kpi"><div class="kpi-label">Largest sector</div><div class="kpi-value">Manufacturing</div><div class="kpi-sub">44,605 Cr NVaR</div></div>
+    <div class="kpi"><div class="kpi-label">Tier A coverage</div><div class="kpi-value">73/101</div><div class="kpi-sub">input completeness</div></div>
+  </div>
+  <div class="pf-grid">
+    <div class="pf-card"><svg class="pf-chart" viewBox="0 0 340 200" role="img" aria-label="NVaR by sector">
+  <text x="16" y="18" class="pf-title">NVaR by sector</text>
+  <path d="M90,100 L90.0,42.0 A58,58 0 0,1 142.8,124.1 Z" fill="#2563EB"/><path d="M90,100 L142.8,124.1 A58,58 0 0,1 52.3,144.1 Z" fill="#D97706"/><path d="M90,100 L52.3,144.1 A58,58 0 0,1 36.8,77.0 Z" fill="#64748B"/><path d="M90,100 L36.8,77.0 A58,58 0 0,1 60.5,50.1 Z" fill="#7C3AED"/><path d="M90,100 L60.5,50.1 A58,58 0 0,1 88.1,42.0 Z" fill="#059669"/><path d="M90,100 L88.1,42.0 A58,58 0 0,1 90.0,42.0 Z" fill="#0891B2"/>
+  <circle cx="90" cy="100" r="30" fill="#fff"/>
+  <text x="90" y="104" text-anchor="middle" class="pf-mid">140,169</text>
+  <rect x="188" y="27" width="10" height="10" fill="#2563EB" rx="2"/><text x="204" y="36" class="pf-label">Manufacturing · 44,605 Cr (32%)</text><rect x="188" y="47" width="10" height="10" fill="#D97706" rx="2"/><text x="204" y="56" class="pf-label">Energy · 41,257 Cr (29%)</text><rect x="188" y="67" width="10" height="10" fill="#64748B" rx="2"/><text x="204" y="76" class="pf-label">Mining · 28,366 Cr (20%)</text><rect x="188" y="87" width="10" height="10" fill="#7C3AED" rx="2"/><text x="204" y="96" class="pf-label">Services · 14,027 Cr (10%)</text><rect x="188" y="107" width="10" height="10" fill="#059669" rx="2"/><text x="204" y="116" class="pf-label">Finance · 11,174 Cr (8%)</text><rect x="188" y="127" width="10" height="10" fill="#0891B2" rx="2"/><text x="204" y="136" class="pf-label">Construction · 740 Cr (1%)</text>
+</svg></div>
+    <div class="pf-card"><svg class="pf-chart" viewBox="0 0 340 244" role="img" aria-label="Top holdings by NVaR">
+  <text x="16" y="16" class="pf-title">Top holdings · INR Cr</text>
+  <text x="16" y="43" class="pf-label">Hindustan Petroleum C…</text><rect x="120" y="32" width="180.0" height="14" fill="#D97706" rx="4" opacity="0.9"/><text x="308" y="43" class="pf-label" text-anchor="end">20,907</text><text x="16" y="69" class="pf-label">Steel Authority of In…</text><rect x="120" y="58" width="125.4" height="14" fill="#64748B" rx="4" opacity="0.9"/><text x="308" y="69" class="pf-label" text-anchor="end">14,568</text><text x="16" y="95" class="pf-label">Redington Limited</text><rect x="120" y="84" width="108.1" height="14" fill="#7C3AED" rx="4" opacity="0.9"/><text x="308" y="95" class="pf-label" text-anchor="end">12,552</text><text x="16" y="121" class="pf-label">AUROBINDO PHARMA LIMI…</text><rect x="120" y="110" width="69.5" height="14" fill="#2563EB" rx="4" opacity="0.9"/><text x="308" y="121" class="pf-label" text-anchor="end">8,076</text><text x="16" y="147" class="pf-label">Hindustan Zinc Limited</text><rect x="120" y="136" width="68.5" height="14" fill="#64748B" rx="4" opacity="0.9"/><text x="308" y="147" class="pf-label" text-anchor="end">7,962</text><text x="16" y="173" class="pf-label">Indus Towers Limited</text><rect x="120" y="162" width="58.7" height="14" fill="#2563EB" rx="4" opacity="0.9"/><text x="308" y="173" class="pf-label" text-anchor="end">6,822</text><text x="16" y="199" class="pf-label">Grasim Industries Lim…</text><rect x="120" y="188" width="47.5" height="14" fill="#2563EB" rx="4" opacity="0.9"/><text x="308" y="199" class="pf-label" text-anchor="end">5,515</text><text x="16" y="225" class="pf-label">Oil India Limited</text><rect x="120" y="214" width="43.7" height="14" fill="#D97706" rx="4" opacity="0.9"/><text x="308" y="225" class="pf-label" text-anchor="end">5,074</text>
+</svg></div>
+    <div class="pf-card"><svg class="pf-chart" viewBox="0 0 340 240" role="img" aria-label="Sector intensity">
+  <text x="16" y="16" class="pf-title">Sector intensity · avg % at risk</text>
+  <text x="108" y="30" class="pf-legend">Blue = revenue · Red = proxy EBITDA</text>
+  <text x="16" y="46" class="pf-label">Mining</text><rect x="108" y="34" width="120.0" height="9" fill="#64748B" rx="3"/><rect x="108" y="47" width="120.0" height="9" fill="#DC2626" opacity="0.75" rx="3"/><text x="240" y="50" class="pf-label">17.2% rev · 62% EBITDA · n=5</text><text x="16" y="78" class="pf-label">Energy</text><rect x="108" y="66" width="112.6" height="9" fill="#D97706" rx="3"/><rect x="108" y="79" width="120.0" height="9" fill="#DC2626" opacity="0.75" rx="3"/><text x="240" y="82" class="pf-label">16.2% rev · 116% EBITDA · n=11</text><text x="16" y="110" class="pf-label">Manufacturing</text><rect x="108" y="98" width="56.5" height="9" fill="#2563EB" rx="3"/><rect x="108" y="111" width="120.0" height="9" fill="#DC2626" opacity="0.75" rx="3"/><text x="240" y="114" class="pf-label">8.1% rev · 68% EBITDA · n=51</text><text x="16" y="142" class="pf-label">Services</text><rect x="108" y="130" width="34.9" height="9" fill="#7C3AED" rx="3"/><rect x="108" y="143" width="97.0" height="9" fill="#DC2626" opacity="0.75" rx="3"/><text x="240" y="146" class="pf-label">5.0% rev · 28% EBITDA · n=10</text><text x="16" y="174" class="pf-label">Construction</text><rect x="108" y="162" width="30.3" height="9" fill="#0891B2" rx="3"/><rect x="108" y="175" width="120.0" height="9" fill="#DC2626" opacity="0.75" rx="3"/><text x="240" y="178" class="pf-label">4.4% rev · 40% EBITDA · n=4</text><text x="16" y="206" class="pf-label">Finance</text><rect x="108" y="194" width="11.5" height="9" fill="#059669" rx="3"/><rect x="108" y="207" width="16.5" height="9" fill="#DC2626" opacity="0.75" rx="3"/><text x="240" y="210" class="pf-label">1.7% rev · 5% EBITDA · n=20</text>
+</svg></div>
+    <div class="pf-card"><svg class="pf-chart" viewBox="0 0 340 132" role="img" aria-label="Evidence tiers">
+  <text x="16" y="16" class="pf-title">Evidence tier coverage</text>
+  <text x="16" y="47" class="pf-label">Tier A</text><rect x="80" y="36" width="200.0" height="14" fill="#059669" rx="4"/><text x="288.0" y="47" class="pf-label">73 names</text><text x="16" y="75" class="pf-label">Tier B</text><rect x="80" y="64" width="74.0" height="14" fill="#0891B2" rx="4"/><text x="162.0" y="75" class="pf-label">27 names</text><text x="16" y="103" class="pf-label">Tier C</text><rect x="80" y="92" width="12.0" height="14" fill="#D97706" rx="4"/><text x="100.0" y="103" class="pf-label">1 names</text>
+</svg></div>
+  </div>
+  <h2>All holdings</h2>
   <div class="toolbar">
     <input type="search" id="q" placeholder="Search company…" aria-label="Search companies"/>
     <select id="sector" aria-label="Filter by sector">

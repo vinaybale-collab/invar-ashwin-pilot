@@ -158,7 +158,8 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 8px 10px 12px;
-      min-height: 140px;
+      min-height: 160px;
+      overflow: hidden;
     }
     .viz-q-card h3 {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -178,6 +179,9 @@
       fill: var(--ink-3);
     }
     .chart-gauge { min-height: 150px; }
+    .chart-svg { width: 100%; height: auto; display: block; max-height: 220px; }
+    .svg-title { font: 600 11px -apple-system, sans-serif; fill: var(--ink-2); }
+    .svg-label { font: 10px -apple-system, BlinkMacSystemFont, sans-serif; fill: var(--ink-3); }
     .viz-panel {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -191,9 +195,6 @@
       .viz-questions { grid-template-columns: 1fr; }
       .viz-wide { grid-column: auto; }
     }
-    .chart-svg { width: 100%; height: auto; display: block; }
-    .svg-title { font: 600 11px -apple-system, sans-serif; fill: var(--ink-2); }
-    .svg-label { font: 11px ui-monospace, Menlo, monospace; fill: var(--ink-3); }
     .svg-accent { fill: var(--accent); font-weight: 600; }
     .svg-legend { font: 10px -apple-system, sans-serif; fill: var(--ink-3); }
     .band-line { stroke: var(--border-2); stroke-width: 2; }
@@ -425,7 +426,7 @@
         </div>
       </div>
       <div class="meta">
-        <div>Generated 2026-06-23 08:45 UTC</div>
+        <div>Generated 2026-06-23 09:12 UTC</div>
         <div class="badges">
           Evidence tier <span class="badge badge-b">B</span> <span class="badge" style="background:var(--ink-2)">Score 63.0</span>
           Engine conf <span class="badge badge-d">D</span>
@@ -435,11 +436,12 @@
 
 
     <section class="investor-summary">
-      <h2>Investor summary · nature-related revenue exposure</h2>
+      <h2>Investor summary</h2>
       <p class="investor-lede">
-        Read this first. Charts and line-by-line derivation follow for auditors who need full traceability.
+        What this company faces, what drives it, and where it concentrates.
+        Charts and line-by-line derivation follow for auditors.
       </p>
-      <p class="investor-p"><strong>Godrej Industries Limited</strong> has an estimated gross nature value at risk (NVaR) of <strong>0.00 Cr</strong> (Monte Carlo median) under a <strong>DISORDERLY</strong> transition over <strong>5Y</strong>. That is equivalent to <strong>0.0%</strong> of annual revenue (4,171 Cr). </p><p class="investor-p">Exposure is mapped across <strong>5 geocoded facilities</strong> using India-specific spatial layers (CGWB district groundwater, NII GIS water stress, WRI Aqueduct baseline, and GLOBIO biodiversity where applicable). Facility-level splits appear in the charts below and in the detailed tables.</p><p class="investor-p">Evidence tier <strong>B</strong> (63/100): Tier B means usable for portfolio screening, but one or more inputs rely on sector defaults or partial disclosure rather than full facility-level detail. 3 audit flag(s) remain — review the audit section before using this figure in allocation decisions. Figures are <strong>gross and pre-mitigation</strong> unless BRSR water-source mix is present; they support portfolio screening and LP diligence, not regulatory disclosure or covenant testing without independent attestation.</p>
+      <p class="investor-p"><strong>Godrej Industries Limited</strong> faces an estimated <strong>0.00 Cr</strong> of gross nature-related value at risk over a <strong>5Y</strong> <strong>disorderly</strong> transition scenario. </p><p class="investor-p">Exposure is geolocated across <strong>5 facilities</strong> in India. The number moves if local water stress worsens, if sector dependency assumptions shift, or if additional mitigation is verified — full mechanics are in the derivation table below.</p><p class="investor-p">We classify input evidence as <strong>Tier B</strong> (63/100) — Tier B means usable for portfolio screening, but one or more inputs rely on sector defaults or partial disclosure rather than full facility-level detail. (3 audit flag(s) to review before using in allocation). Screening-grade gross NVaR for portfolio and LP diligence — not for covenant or regulatory disclosure without attestation.</p>
     </section>
 
 
@@ -451,21 +453,27 @@
       </p>
       <div class="hero-cards"><div class="hero-card"><div class="hero-card-label">Gross NVaR</div><div class="hero-card-value">0.00</div><div class="hero-card-sub">INR Cr · median · pre-mitigation</div></div><div class="hero-card"><div class="hero-card-label">Revenue at risk</div><div class="hero-card-value">0.0%</div><div class="hero-card-sub">of annual revenue</div></div><div class="hero-card"><div class="hero-card-label">EBITDA at risk</div><div class="hero-card-value">0.0%</div><div class="hero-card-sub">sector-proxy margin · screening</div></div><div class="hero-card"><div class="hero-card-label">Revenue base</div><div class="hero-card-value">4,171</div><div class="hero-card-sub">INR Cr · disclosed / modelled</div></div><div class="hero-card"><div class="hero-card-label">Facilities</div><div class="hero-card-value">5</div><div class="hero-card-sub">geocoded in pilot</div></div><div class="hero-card"><div class="hero-card-label">Evidence</div><div class="hero-card-value">Tier B · 63</div><div class="hero-card-sub">composite score / 100</div></div></div>
       <div class="viz-questions">
-        <article class="viz-q-card"><h3>1 · How much is at stake?</h3><svg class="chart-svg chart-gauge" viewBox="0 0 360 150" role="img" aria-label="Revenue and EBITDA at risk">
-  <text x="20" y="18" class="svg-title">Q1 · How much is at stake?</text>
-  <path d="M70,95 A50,50 0 0,1 170,95" fill="none" stroke="#E8E6DF" stroke-width="12"/>
-  <path d="M70.0,95 A50,50 0 0,1 70.0,95.0" fill="none" stroke="#2563EB" stroke-width="12" stroke-linecap="round"/><text x="120" y="113" text-anchor="middle" class="gauge-big">0.0%</text><text x="120" y="127" text-anchor="middle" class="svg-label">of revenue</text>
-  <path d="M190,95 A50,50 0 0,1 290,95" fill="none" stroke="#E8E6DF" stroke-width="12"/>
-  <path d="M190.0,95 A50,50 0 0,1 190.0,95.0" fill="none" stroke="#DC2626" stroke-width="12" stroke-linecap="round"/><text x="240" y="113" text-anchor="middle" class="gauge-big">0.0%</text><text x="240" y="127" text-anchor="middle" class="svg-label">of proxy EBITDA</text>
-  <text x="20" y="130" class="svg-label">Gross NVaR median 0.00 Cr · EBITDA uses sector margin proxy</text>
-</svg></article><article class="viz-q-card"><h3>2 · How uncertain is the estimate?</h3><p class="muted">NVaR fan chart unavailable.</p></article><article class="viz-q-card"><h3>3 · Which services drive risk?</h3><p class="muted">No material service contributions.</p></article><article class="viz-q-card"><h3>4 · What drives each channel?</h3><p class="muted">Decomposition unavailable.</p></article><article class="viz-q-card viz-wide"><h3>5 · Where is exposure concentrated?</h3><p class="muted">Facility split unavailable.</p></article><article class="viz-q-card"><h3>6 · How much mitigation applies?</h3><p class="muted">No mitigation data.</p></article><article class="viz-q-card"><h3>7 · Can I trust this number?</h3><svg class="chart-svg" viewBox="0 0 360 150" role="img" aria-label="Evidence quality">
-  <text x="20" y="18" class="svg-title">Q7 · Can I trust this number?</text>
-  <circle cx="70" cy="88" r="44" fill="none" stroke="#E8E6DF" stroke-width="10"/>
-  <circle cx="70" cy="88" r="44" fill="none" stroke="#0891B2" stroke-width="10"
-    stroke-dasharray="173.9 276" transform="rotate(-90 70 88)"/>
-  <text x="70" y="84" text-anchor="middle" class="gauge-big">63</text>
-  <text x="70" y="100" text-anchor="middle" class="svg-label">Tier B</text>
-  <text x="180" y="50" class="svg-label">EXACT match</text><rect x="180" y="54" width="57.6" height="8" fill="#2563EB" rx="4"/><text x="241.6" y="62" class="svg-label">+12</text><text x="180" y="72" class="svg-label">revenue&gt;0</text><rect x="180" y="76" width="38.4" height="8" fill="#059669" rx="4"/><text x="222.4" y="84" class="svg-label">+8</text><text x="180" y="94" class="svg-label">n_facilities=5</text><rect x="180" y="98" width="62.4" height="8" fill="#D97706" rx="4"/><text x="246.4" y="106" class="svg-label">+13</text><text x="180" y="116" class="svg-label">sector outside top-30</text><rect x="180" y="120" width="0.0" height="8" fill="#DC2626" rx="4"/><text x="184.0" y="128" class="svg-label">+0</text><text x="180" y="138" class="svg-label">zero pct_revenue_at_r…</text><rect x="180" y="142" width="0.0" height="8" fill="#7C3AED" rx="4"/><text x="184.0" y="150" class="svg-label">+0</text>
+        <article class="viz-q-card"><h3>1 · How much is at stake?</h3><svg class="chart-svg chart-gauge" viewBox="0 0 380 178" role="img" aria-label="Revenue and EBITDA at risk">
+  <text x="16" y="16" class="svg-title">Exposure headline</text>
+  <path d="M45,88 A42,42 0 0,1 141,88" fill="none" stroke="#E8E6DF" stroke-width="11"/>
+  <path d="M51.0,88 A42,42 0 0,1 51.0,88.0" fill="none" stroke="#2563EB" stroke-width="11" stroke-linecap="round"/>
+  <text x="93" y="82" text-anchor="middle" class="gauge-big">0.0%</text>
+  <text x="93" y="98" text-anchor="middle" class="svg-label">of revenue</text>
+  <path d="M239,88 A42,42 0 0,1 335,88" fill="none" stroke="#E8E6DF" stroke-width="11"/>
+  <path d="M245.0,88 A42,42 0 0,1 245.0,88.0" fill="none" stroke="#DC2626" stroke-width="11" stroke-linecap="round"/>
+  <text x="287" y="82" text-anchor="middle" class="gauge-big">0.0%</text>
+  <text x="287" y="98" text-anchor="middle" class="svg-label">of proxy EBITDA</text>
+  <text x="16" y="132" class="svg-label">Gross NVaR median · 0.00 Cr</text>
+  <text x="16" y="150" class="svg-label">EBITDA uses sector margin proxy · screening only</text>
+</svg></article><article class="viz-q-card"><h3>2 · How uncertain is the estimate?</h3><p class="muted">NVaR fan chart unavailable.</p></article><article class="viz-q-card"><h3>3 · Which services drive risk?</h3><p class="muted">No material service contributions.</p></article><article class="viz-q-card"><h3>4 · What drives each channel?</h3><p class="muted">Decomposition unavailable.</p></article><article class="viz-q-card viz-wide"><h3>5 · Where is exposure concentrated?</h3><p class="muted">Facility split unavailable.</p></article><article class="viz-q-card"><h3>6 · How much mitigation applies?</h3><p class="muted">No mitigation data.</p></article><article class="viz-q-card"><h3>7 · Can I trust this number?</h3><svg class="chart-svg" viewBox="0 0 380 168" role="img" aria-label="Evidence quality">
+  <text x="16" y="16" class="svg-title">Data confidence</text>
+  <circle cx="72" cy="72" r="40" fill="none" stroke="#E8E6DF" stroke-width="9"/>
+  <circle cx="72" cy="72" r="40" fill="none" stroke="#0891B2" stroke-width="9"
+    stroke-dasharray="158.1 251" transform="rotate(-90 72 72)"/>
+  <text x="72" y="68" text-anchor="middle" class="gauge-big">63</text>
+  <text x="72" y="84" text-anchor="middle" class="svg-label">Tier B</text>
+  <text x="148" y="68" class="svg-label">Input coverage drivers</text>
+  <text x="148" y="88" class="svg-label">EXACT match</text><rect x="148" y="92" width="57.6" height="7" fill="#2563EB" rx="3"/><text x="211.6" y="99" class="svg-label">+12</text><text x="148" y="108" class="svg-label">revenue&gt;0</text><rect x="148" y="112" width="38.4" height="7" fill="#059669" rx="3"/><text x="192.4" y="119" class="svg-label">+8</text><text x="148" y="128" class="svg-label">n_facilities=5</text><rect x="148" y="132" width="62.4" height="7" fill="#D97706" rx="3"/><text x="216.4" y="139" class="svg-label">+13</text><text x="148" y="148" class="svg-label">sector outside top-…</text><rect x="148" y="152" width="0.0" height="7" fill="#DC2626" rx="3"/><text x="154.0" y="159" class="svg-label">+0</text>
 </svg></article>
       </div>
     </section>
